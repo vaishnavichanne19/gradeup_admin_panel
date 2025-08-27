@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { toast } from "react-toastify";
 import { redirectTo } from "../../main";
 
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
-  const [loggedInUser, setLoggedInUser] = useState('');
+  const [_loggedInUser, setLoggedInUser] = useState('');
 
   function toggleDropdown() {
     setIsOpen(!isOpen);

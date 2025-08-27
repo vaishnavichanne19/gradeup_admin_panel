@@ -40,10 +40,10 @@ export const BoardSubject: React.FC = () => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const boardRes = await axios.get("http://localhost:8005/api/getboard");
-      const classRes = await axios.get("http://localhost:8005/api/getclass");
+      const boardRes = await axios.get("https://api.gradeup01.in/api/getboard");
+      const classRes = await axios.get("https://api.gradeup01.in/api/getclass");
       const subjectRes = await axios.get(
-        "http://localhost:8005/api/getallsubject"
+        "https://api.gradeup01.in/api/getallsubject"
       );
 
       setBoards(boardRes.data);
@@ -56,7 +56,7 @@ export const BoardSubject: React.FC = () => {
 
   const DeleteSubject = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deletesubject/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deletesubject/${userId}`);
 
       setSubjects((PrevUser) => PrevUser.filter((user) => user._id !== userId));
 

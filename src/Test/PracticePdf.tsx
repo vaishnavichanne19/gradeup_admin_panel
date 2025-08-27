@@ -24,7 +24,7 @@ export const Practicepdf: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:8005/api/getpracticepdf"
+        "https://api.gradeup01.in/api/getpracticepdf"
       );
       if (response.data.length > 0) {
         setMainHeading(response.data[0].heading);
@@ -37,7 +37,7 @@ export const Practicepdf: React.FC = () => {
 
   const DeleteData = async (userID: string) => {
     try {
-        await axios.delete(`http://localhost:8005/api/deletepracticepdf/${userID}`);
+        await axios.delete(`https://api.gradeup01.in/api/deletepracticepdf/${userID}`);
 
         setPracticepdfUser((Prevuser) => 
         Prevuser.filter((user) => user._id !== userID)
@@ -113,7 +113,7 @@ export const Practicepdf: React.FC = () => {
                   <div className="flex items-start my-2">
                     <li className="text-sm font-medium text-gray-800 dark:text-white/90">
                       <a
-                        href={`http://localhost:8005/files/${user.practicepdf}`}
+                        href={`https://api.gradeup01.in/files/${user.practicepdf}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -199,7 +199,7 @@ export const PracticepdfAdd: React.FC = () => {
       formData.append("practicepdf", practicepdfUser.practicepdf);
 
       await axios.post(
-        "http://localhost:8005/api/createPracticepdf",
+        "https://api.gradeup01.in/api/createPracticepdf",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -272,7 +272,7 @@ export const PracticepdfEdit: React.FC = () => {
     const fetchPracticepdfData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getpracticepdfid/${id}`
+          `https://api.gradeup01.in/api/getpracticepdfid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
@@ -321,7 +321,7 @@ export const PracticepdfEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatepracticepdf/${id}`,
+        `https://api.gradeup01.in/api/updatepracticepdf/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

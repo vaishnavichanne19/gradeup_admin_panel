@@ -39,7 +39,7 @@ const Signup: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8005/api/signup",
+        "https://api.gradeup01.in/api/signup",
         { username, email, password },
         {
           withCredentials: true,

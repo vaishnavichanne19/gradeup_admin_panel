@@ -42,7 +42,7 @@ export const ChooseUs: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getcount");
+      const response = await axios.get("https://api.gradeup01.in/api/getcount");
       setNoCountUser(response.data);
     };
 
@@ -51,7 +51,7 @@ export const ChooseUs: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getchooseus");
+      const response = await axios.get("https://api.gradeup01.in/api/getchooseus");
       if (response.data.length > 0) {
         setmainheading(response.data[0].heading);
         setmainheading1(response.data[0].heading1);
@@ -64,7 +64,7 @@ export const ChooseUs: React.FC = () => {
 
   const deleteUser = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deletecount/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deletecount/${userId}`);
 
       setNoCountUser((prevUsers) =>
         prevUsers.filter((user) => user._id !== userId)
@@ -196,8 +196,8 @@ export const ChooseUs: React.FC = () => {
         </div>
 
         <div className="space-y-6 mt-6">
-          <div><Link to="/ChooseUs-add">
-          Add Data</Link></div>
+          {/* <div><Link to="/ChooseUs-add">
+          Add Data</Link></div> */}
           <div className="w-full border p-4 rounded-lg shadow-md dark:border-gray-700">
             <div>
               <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
@@ -259,7 +259,7 @@ export const NumberAdd: React.FC = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8005/api/createcount", NumberData);
+      await axios.post("https://api.gradeup01.in/api/createcount", NumberData);
 
       toast.success("Data added successfully!");
       navigate("/ChooseUs");
@@ -340,7 +340,7 @@ export const NumberEdit: React.FC = () => {
     const fetchNumberData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getcountbyid/${id}`
+          `https://api.gradeup01.in/api/getcountbyid/${id}`
         );
         if (response.data.success) {
           setNumberUser(response.data.data);
@@ -365,7 +365,7 @@ export const NumberEdit: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatecount/${id}`,
+        `https://api.gradeup01.in/api/updatecount/${id}`,
         Numberuser
       );
 
@@ -449,7 +449,7 @@ export const ChooseUsHeadingEdit: React.FC = () => {
     const fetchChooseUsData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getchooseusbyid/${id}`
+          `https://api.gradeup01.in/api/getchooseusbyid/${id}`
         );
         if (response.data.success) {
           setChooseUsUser(response.data.data);
@@ -474,7 +474,7 @@ export const ChooseUsHeadingEdit: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatechooseus/${id}`,
+        `https://api.gradeup01.in/api/updatechooseus/${id}`,
         ChooseUsuser
       );
 
@@ -556,7 +556,7 @@ export const ChooseUsEdit: React.FC = () => {
     const fetchChooseUsData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getchooseusbyid/${id}`
+          `https://api.gradeup01.in/api/getchooseusbyid/${id}`
         );
         if (response.data.success) {
           setChooseUsUser(response.data.data);
@@ -581,7 +581,7 @@ export const ChooseUsEdit: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatechooseus/${id}`,
+        `https://api.gradeup01.in/api/updatechooseus/${id}`,
         ChooseUsuser
       );
 

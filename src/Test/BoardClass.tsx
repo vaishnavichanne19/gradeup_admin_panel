@@ -33,8 +33,8 @@ export const BoardClass: React.FC = () => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const boardRes = await axios.get("http://localhost:8005/api/getboard");
-      const classRes = await axios.get("http://localhost:8005/api/getclass");
+      const boardRes = await axios.get("https://api.gradeup01.in/api/getboard");
+      const classRes = await axios.get("https://api.gradeup01.in/api/getclass");
 
       setBoards(boardRes.data);
       setClasses(classRes.data);
@@ -45,7 +45,7 @@ export const BoardClass: React.FC = () => {
 
   const DeleteClass = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deleteclass/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deleteclass/${userId}`);
 
       setClasses((PrevUser) => PrevUser.filter((user) => user._id !== userId));
 

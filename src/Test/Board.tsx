@@ -41,7 +41,7 @@ export const Board: React.FC = () => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const boardRes = await axios.get("http://localhost:8005/api/getboard");
+      const boardRes = await axios.get("https://api.gradeup01.in/api/getboard");
       setBoards(boardRes.data);
     };
 
@@ -50,7 +50,7 @@ export const Board: React.FC = () => {
 
   const DeleteBoard = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deleteboard/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deleteboard/${userId}`);
 
       setBoards((PrevUser) => PrevUser.filter((user) => user._id !== userId));
 
@@ -250,7 +250,7 @@ export const BoardAdd: React.FC = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8005/api/createboard", BoardData);
+      await axios.post("https://api.gradeup01.in/api/createboard", BoardData);
 
       toast.success("Data added successfully!");
       navigate("/Board");
@@ -315,7 +315,7 @@ export const BoardEdit: React.FC = () => {
     const fetchBoardData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getboardid/${id}`
+          `https://api.gradeup01.in/api/getboardid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
@@ -339,7 +339,7 @@ export const BoardEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateboard/${id}`,
+        `https://api.gradeup01.in/api/updateboard/${id}`,
         Boarduser
       );
 
@@ -408,7 +408,7 @@ export const ClassAdd: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getboard");
+      const response = await axios.get("https://api.gradeup01.in/api/getboard");
       setBoardUser(response.data);
     };
 
@@ -426,7 +426,7 @@ export const ClassAdd: React.FC = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8005/api/createclass", ClassData);
+      await axios.post("https://api.gradeup01.in/api/createclass", ClassData);
 
       toast.success("Data added successfully!");
       navigate("/Class");
@@ -510,7 +510,7 @@ export const ClassEdit: React.FC = () => {
     const fetchClassData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getclassid/${id}`
+          `https://api.gradeup01.in/api/getclassid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
@@ -534,7 +534,7 @@ export const ClassEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateclass/${id}`,
+        `https://api.gradeup01.in/api/updateclass/${id}`,
         Classuser
       );
 
@@ -607,7 +607,7 @@ export const SubjectAdd: React.FC = () => {
 
   useEffect(() => {
     const fetchBoards = async () => {
-      const response = await axios.get("http://localhost:8005/api/getboard");
+      const response = await axios.get("https://api.gradeup01.in/api/getboard");
       setBoardUser(response.data);
     };
 
@@ -621,7 +621,7 @@ export const SubjectAdd: React.FC = () => {
         return;
       }
       const response = await axios.get(
-        `http://localhost:8005/api/getclass?boardId=${SubjectData.boardId}`
+        `https://api.gradeup01.in/api/getclass?boardId=${SubjectData.boardId}`
       );
       setClassUser(response.data);
     };
@@ -640,7 +640,7 @@ export const SubjectAdd: React.FC = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8005/api/createsubject", SubjectData);
+      await axios.post("https://api.gradeup01.in/api/createsubject", SubjectData);
 
       toast.success("Data added successfully!");
       navigate("/BoardSubject");
@@ -743,7 +743,7 @@ export const SubjectEdit: React.FC = () => {
     const fetchSubjectData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getsubjectid/${id}`
+          `https://api.gradeup01.in/api/getsubjectid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
@@ -767,7 +767,7 @@ export const SubjectEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateSubject/${id}`,
+        `https://api.gradeup01.in/api/updateSubject/${id}`,
         Subjectuser
       );
 
@@ -846,7 +846,7 @@ export const PdfAdd: React.FC = () => {
   // Fetch Boards
   useEffect(() => {
     const fetchBoards = async () => {
-      const response = await axios.get("http://localhost:8005/api/getboard");
+      const response = await axios.get("https://api.gradeup01.in/api/getboard");
       setBoardUser(response.data);
     };
     fetchBoards();
@@ -860,7 +860,7 @@ export const PdfAdd: React.FC = () => {
         return;
       }
       const response = await axios.get(
-        `http://localhost:8005/api/getclass?boardId=${PdfData.boardId}`
+        `https://api.gradeup01.in/api/getclass?boardId=${PdfData.boardId}`
       );
       setClassUser(response.data);
     };
@@ -875,7 +875,7 @@ export const PdfAdd: React.FC = () => {
         return;
       }
       const response = await axios.get(
-        `http://localhost:8005/api/getallsubject?classId=${PdfData.classId}`
+        `https://api.gradeup01.in/api/getallsubject?classId=${PdfData.classId}`
       );
       setSubjectUser(response.data);
     };
@@ -929,7 +929,7 @@ export const PdfAdd: React.FC = () => {
       formData.append("classId", PdfData.classId);
       formData.append("subjectId", PdfData.subjectId);
 
-      await axios.post("http://localhost:8005/api/createpdf", formData, {
+      await axios.post("https://api.gradeup01.in/api/createpdf", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -1037,7 +1037,7 @@ interface PdfEditData {
 }
 
 export const PdfEdit: React.FC = () => {
-  const [PdfUser, setPdfUser] = useState<PdfEditData>({
+  const [_PdfUser, setPdfUser] = useState<PdfEditData>({
     pdfname: "",
   });
 
@@ -1049,7 +1049,7 @@ export const PdfEdit: React.FC = () => {
     const fetchPdfData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getpdfid/${id}`
+          `https://api.gradeup01.in/api/getpdfid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
@@ -1092,7 +1092,7 @@ export const PdfEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatepdf/${id}`,
+        `https://api.gradeup01.in/api/updatepdf/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

@@ -31,7 +31,7 @@ export const FAQ: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getfaq");
+      const response = await axios.get("https://api.gradeup01.in/api/getfaq");
       if (response.data.length > 0) {
         setmainheading(response.data[0].mainheading);
         setheading(response.data[0].heading1);
@@ -47,7 +47,7 @@ export const FAQ: React.FC = () => {
 
   const deleteUser = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deletefaq/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deletefaq/${userId}`);
 
       setFAQUser((prevUsers) =>
         prevUsers.filter((user) => user._id !== userId)
@@ -232,7 +232,7 @@ export const FAQAdd: React.FC = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8005/api/createfaq", FAQData);
+      await axios.post("https://api.gradeup01.in/api/createfaq", FAQData);
 
       toast.success("Data added successfully!");
       navigate("/FAQ");
@@ -335,7 +335,7 @@ export const FAQEdit: React.FC = () => {
   const fetchFirstStepData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getfaqbyid/${id}`
+        `https://api.gradeup01.in/api/getfaqbyid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
@@ -389,7 +389,7 @@ export const FAQEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatefaq/${id}`,
+        `https://api.gradeup01.in/api/updatefaq/${id}`,
         formData,
         {
           headers: {
@@ -499,7 +499,7 @@ export const FAQEditData: React.FC = () => {
     const fetchFAQData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getfaqbyid/${id}`
+          `https://api.gradeup01.in/api/getfaqbyid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
@@ -524,12 +524,12 @@ export const FAQEditData: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatefaq/${id}`,
+        `https://api.gradeup01.in/api/updatefaq/${id}`,
         FAQuser
       );
 
       if (response.data.success) {
-        toast.success("Data updated successfully!");
+        toast.info("Data updated successfully!");
         navigate("/FAQ");
       } else {
         toast.error(response.data.message);

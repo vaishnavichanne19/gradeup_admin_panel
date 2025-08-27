@@ -43,7 +43,7 @@ export const Blog: React.FC = () => {
 
     try {
       await axios.put(
-        `http://localhost:8005/api/createblog/${itemId}/publish`,
+        `https://api.gradeup01.in/api/createblog/${itemId}/publish`,
         { publish: updatedValue }
       );
 
@@ -65,7 +65,7 @@ export const Blog: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getblog");
+      const response = await axios.get("https://api.gradeup01.in/api/getblog");
       if (response.data.length > 0) {
         setMainHeading(response.data[0].heading);
         setMainHeading1(response.data[0].heading1);
@@ -80,7 +80,7 @@ export const Blog: React.FC = () => {
 
   const DeleteData = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deleteblog/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deleteblog/${userId}`);
 
       setBlogUser((PrevUser) => PrevUser.filter((user) => user._id !== userId));
 
@@ -166,7 +166,7 @@ export const Blog: React.FC = () => {
                   <div className="w-full md:w-1/2 px-2 my-6">
                     <img
                       className="w-full h-100 rounded-md object-cover"
-                      src={`http://localhost:8005/images/${MainImage}`}
+                      src={`https://api.gradeup01.in/images/${MainImage}`}
                       alt="Blog Img1"
                     />
                   </div>
@@ -244,7 +244,7 @@ export const Blog: React.FC = () => {
                     <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                       <img
                         className="w-40 h-40 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.blogimage}`}
+                        src={`https://api.gradeup01.in/images/${user.blogimage}`}
                         alt="Blog Img1"
                       />
                     </TableCell>
@@ -337,7 +337,7 @@ export const Blog: React.FC = () => {
 //     const BlogDetailData = async () => {
 //       try {
 //         const response = await axios.get(
-//           `http://localhost:8005/api/getblogbyid/${id}`
+//           `https://api.gradeup01.in/api/getblogbyid/${id}`
 //         );
 //         setBlogDetailUser(response.data.data);
 //       } catch (error) {
@@ -412,7 +412,7 @@ export const Blog: React.FC = () => {
 //                   <div className="w-full md:w-1/2 px-2 my-6">
 //                     <img
 //                       className="w-full h-100 rounded-md object-cover"
-//                       src={`http://localhost:8005/images/${BlogDetailUser.blogimage}`}
+//                       src={`https://api.gradeup01.in/images/${BlogDetailUser.blogimage}`}
 //                       alt="Blog Img1"
 //                     />
 //                   </div>
@@ -559,7 +559,7 @@ export const BlogAdd: React.FC = () => {
       formData.append("description", editorData);
       formData.append("blogimage", BlogData.blogimage);
 
-      await axios.post("http://localhost:8005/api/createblog", formData, {
+      await axios.post("https://api.gradeup01.in/api/createblog", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -703,14 +703,14 @@ export const BlogEdit: React.FC = () => {
   const fetchBlogData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getBlogbyid/${id}`
+        `https://api.gradeup01.in/api/getBlogbyid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
         const data = response.data.data;
 
         setBlogUser(data);
-        setPreviewImage1(`http://localhost:8005/images/${data.blogimage}`);
+        setPreviewImage1(`https://api.gradeup01.in/images/${data.blogimage}`);
 
         // Wait for CKEditor to be ready
         const interval = setInterval(() => {
@@ -803,7 +803,7 @@ export const BlogEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateBlog/${id}`,
+        `https://api.gradeup01.in/api/updateBlog/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -938,14 +938,14 @@ export const BlogDataEdit: React.FC = () => {
   const fetchBlogData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getBlogbyid/${id}`
+        `https://api.gradeup01.in/api/getBlogbyid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
         const data = response.data.data;
 
         setBlogUser(data);
-        setPreviewImage1(`http://localhost:8005/images/${data.blogimage}`);
+        setPreviewImage1(`https://api.gradeup01.in/images/${data.blogimage}`);
 
         // Wait for CKEditor to be ready
         const interval = setInterval(() => {
@@ -1038,7 +1038,7 @@ export const BlogDataEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateBlog/${id}`,
+        `https://api.gradeup01.in/api/updateBlog/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -1173,14 +1173,14 @@ export const BlogDetailEdit: React.FC = () => {
   const fetchBlogData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getBlogbyid/${id}`
+        `https://api.gradeup01.in/api/getBlogbyid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
         const data = response.data.data;
 
         setBlogUser(data);
-        setPreviewImage1(`http://localhost:8005/images/${data.blogimage}`);
+        setPreviewImage1(`https://api.gradeup01.in/images/${data.blogimage}`);
 
         // Wait for CKEditor to be ready
         const interval = setInterval(() => {
@@ -1273,7 +1273,7 @@ export const BlogDetailEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateBlog/${id}`,
+        `https://api.gradeup01.in/api/updateBlog/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

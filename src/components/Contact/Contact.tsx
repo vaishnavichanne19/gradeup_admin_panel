@@ -38,7 +38,7 @@ export const Contact: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getcontact");
+      const response = await axios.get("https://api.gradeup01.in/api/getcontact");
       if (response.data.length > 0) {
         setMainHeading(response.data[0].heading);
         setMainHeading1(response.data[0].heading1);
@@ -50,21 +50,21 @@ export const Contact: React.FC = () => {
     fetchData();
   }, []);
 
-  const deleteUser = async (userId: string) => {
-    try {
-      await axios.delete(`http://localhost:8005/api/deletecontact/${userId}`);
+  // const deleteUser = async (userId: string) => {
+  //   try {
+  //     await axios.delete(`https://api.gradeup01.in/api/deletecontact/${userId}`);
 
-      setContactUser((prevUsers) =>
-        prevUsers.filter((user) => user._id !== userId)
-      );
+  //     setContactUser((prevUsers) =>
+  //       prevUsers.filter((user) => user._id !== userId)
+  //     );
 
-      toast.error("Data Deleted Successfully!");
-      navigate("/Contact");
-    } catch (error) {
-      console.error("There was an error!", error);
-      toast.error("Failed to delete data!");
-    }
-  };
+  //     toast.error("Data Deleted Successfully!");
+  //     navigate("/Contact");
+  //   } catch (error) {
+  //     console.error("There was an error!", error);
+  //     toast.error("Failed to delete data!");
+  //   }
+  // };
 
   return (
     <div>
@@ -140,7 +140,7 @@ export const Contact: React.FC = () => {
           {ContactUser.map((user) => (
             <div
               key={user._id}
-              className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6"
+              className="rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-white/[0.03] md:p-6"
             >
               <div className="flex justify-between">
                 <div>
@@ -169,7 +169,7 @@ export const Contact: React.FC = () => {
                     <Dropdown
                       isOpen={true}
                       onClose={closeDropdown}
-                      className="w-40 p-2 absolute right-0 z-50 mt-2 bg-white border border-gray-200 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700"
+                      className="w-40 p-2 absolute right-0 top-4 z-50 mt-1 bg-white border border-gray-200 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700"
                     >
                       <DropdownItem
                         className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
@@ -180,12 +180,12 @@ export const Contact: React.FC = () => {
                       >
                         Edit
                       </DropdownItem>
-                      <DropdownItem
+                      {/* <DropdownItem
                         onClick={() => deleteUser(user._id)}
                         className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
                       >
                         Delete
-                      </DropdownItem>
+                      </DropdownItem> */}
                     </Dropdown>
                   )}
                 </div>
@@ -218,7 +218,7 @@ export const ContactEdit: React.FC = () => {
     const fetchContactData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getcontactbyid/${id}`
+          `https://api.gradeup01.in/api/getcontactbyid/${id}`
         );
         if (response.data.success) {
           setContactUser(response.data.data);
@@ -243,7 +243,7 @@ export const ContactEdit: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatecontact/${id}`,
+        `https://api.gradeup01.in/api/updatecontact/${id}`,
         Contactuser
       );
 

@@ -23,7 +23,7 @@ export const Banner: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getbanner");
+      const response = await axios.get("https://api.gradeup01.in/api/getbanner");
       setBannerUser(response.data);
     };
 
@@ -32,7 +32,7 @@ export const Banner: React.FC = () => {
 
   // const deleteUser = async (userId: string) => {
   //   try {
-  //     await axios.delete(`http://localhost:8005/api/deletebanner/${userId}`);
+  //     await axios.delete(`https://api.gradeup01.in/api/deletebanner/${userId}`);
 
   //     setBannerUser(
   //       (prevUsers) => prevUsers.filter((user) => user._id !== userId)
@@ -133,14 +133,14 @@ export const Banner: React.FC = () => {
                     <div className="w-full md:w-1/2 px-2">
                       <img
                         className="w-full h-100 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.bannerimage1}`}
+                        src={`https://api.gradeup01.in/images/${user.bannerimage1}`}
                         alt="Banner Img1"
                       />
                     </div>
                     <div className="w-full md:w-1/2 px-2">
                       <img
                         className="w-full h-100 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.bannerimage2}`}
+                        src={`https://api.gradeup01.in/images/${user.bannerimage2}`}
                         alt="Banner Img2"
                       />
                     </div>
@@ -245,8 +245,8 @@ export const BannerAdd: React.FC = () => {
       const objectUrl = URL.createObjectURL(file);
       img.src = objectUrl;
       img.onload = () => {
-        if (img.width > 1350 || img.height > 700) {
-          toast.error("Image dimensions should not exceed 1350x700.");
+        if (img.width > 1350 || img.height > 500) {
+          toast.error("Image dimensions should not exceed 1350x500.");
           URL.revokeObjectURL(objectUrl);
           return;
         }
@@ -283,7 +283,7 @@ export const BannerAdd: React.FC = () => {
       formData.append("bannerimage1", bannerData.bannerimage1);
       formData.append("bannerimage2", bannerData.bannerimage2);
 
-      await axios.post("http://localhost:8005/api/createbanner", formData, {
+      await axios.post("https://api.gradeup01.in/api/createbanner", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -446,15 +446,15 @@ export const BannerEdit: React.FC = () => {
   const fetchBannerData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getone/${id}`
+        `https://api.gradeup01.in/api/getone/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
         const data = response.data.data;
 
         setBannerUser(data);
-        setPreviewImage1(`http://localhost:8005/images/${data.bannerimage1}`);
-        setPreviewImage2(`http://localhost:8005/images/${data.bannerimage2}`);
+        setPreviewImage1(`https://api.gradeup01.in/images/${data.bannerimage1}`);
+        setPreviewImage2(`https://api.gradeup01.in/images/${data.bannerimage2}`);
 
         // Wait for CKEditor to be ready
         const interval = setInterval(() => {
@@ -548,7 +548,7 @@ export const BannerEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatebanner/${id}`,
+        `https://api.gradeup01.in/api/updatebanner/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

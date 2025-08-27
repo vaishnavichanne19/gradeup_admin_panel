@@ -24,7 +24,7 @@ export const About: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getabout");
+      const response = await axios.get("https://api.gradeup01.in/api/getabout");
       setAboutUser(response.data);
     };
 
@@ -124,7 +124,7 @@ export const About: React.FC = () => {
                       <div className="w-full md:w-1/2 px-2 my-6">
                         <img
                           className="w-full h-100 rounded-md object-cover"
-                          src={`http://localhost:8005/images/${user.aboutimage1}`}
+                          src={`https://api.gradeup01.in/images/${user.aboutimage1}`}
                           alt="About Img1"
                         />
                       </div>
@@ -133,7 +133,7 @@ export const About: React.FC = () => {
                       <div className="w-full md:w-1/2 px-2 my-6">
                         <img
                           className="w-full h-100 rounded-md object-cover"
-                          src={`http://localhost:8005/images/${user.aboutimage2}`}
+                          src={`https://api.gradeup01.in/images/${user.aboutimage2}`}
                           alt="About Img2"
                         />
                       </div>
@@ -142,7 +142,7 @@ export const About: React.FC = () => {
                       <div className="w-full md:w-1/2 px-2">
                         <img
                           className="w-full h-100 rounded-md object-cover"
-                          src={`http://localhost:8005/images/${user.aboutimage3}`}
+                          src={`https://api.gradeup01.in/images/${user.aboutimage3}`}
                           alt="About Img3"
                         />
                       </div>
@@ -294,7 +294,7 @@ export const AboutAdd: React.FC = () => {
       formData.append("aboutimage2", AboutData.aboutimage2);
       formData.append("aboutimage3", AboutData.aboutimage3);
 
-      await axios.post("http://localhost:8005/api/createabout", formData, {
+      await axios.post("https://api.gradeup01.in/api/createabout", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -490,16 +490,16 @@ export const AboutEdit: React.FC = () => {
   const fetchAboutData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getaboutbyid/${id}`
+        `https://api.gradeup01.in/api/getaboutbyid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
         const data = response.data.data;
 
         setAboutUser(data);
-        setPreviewImage1(`http://localhost:8005/images/${data.aboutimage1}`);
-        setPreviewImage2(`http://localhost:8005/images/${data.aboutimage2}`);
-        setPreviewImage3(`http://localhost:8005/images/${data.aboutimage3}`);
+        setPreviewImage1(`https://api.gradeup01.in/images/${data.aboutimage1}`);
+        setPreviewImage2(`https://api.gradeup01.in/images/${data.aboutimage2}`);
+        setPreviewImage3(`https://api.gradeup01.in/images/${data.aboutimage3}`);
 
         // Wait for CKEditor to be ready
         const interval = setInterval(() => {
@@ -600,7 +600,7 @@ export const AboutEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateabout/${id}`,
+        `https://api.gradeup01.in/api/updateabout/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

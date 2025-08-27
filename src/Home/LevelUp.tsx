@@ -22,7 +22,7 @@ export const LevelUp: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getlevelup");
+      const response = await axios.get("https://api.gradeup01.in/api/getlevelup");
       setLevelUpUser(response.data);
     };
 
@@ -103,7 +103,7 @@ export const LevelUp: React.FC = () => {
                   </p>
                   <img
                     className="w-50 h-auto rounded-md object-cover"
-                    src={`http://localhost:8005/images/${user.logo}`}
+                    src={`https://api.gradeup01.in/images/${user.logo}`}
                     alt="Logo"
                   />
                 </div>
@@ -117,14 +117,14 @@ export const LevelUp: React.FC = () => {
                     <div className="w-full md:w-1/2 px-2">
                       <img
                         className="w-full h-100 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.levelupimage1}`}
+                        src={`https://api.gradeup01.in/images/${user.levelupimage1}`}
                         alt="LevelUp Img1"
                       />
                     </div>
                     <div className="w-full md:w-1/2 px-2">
                       <img
                         className="w-full h-100 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.levelupimage2}`}
+                        src={`https://api.gradeup01.in/images/${user.levelupimage2}`}
                         alt="LevelUp Img2"
                       />
                     </div>
@@ -232,7 +232,7 @@ export const LevelUpAdd: React.FC = () => {
       formData.append("levelupimage2", LevelUpData.levelupimage2);
       formData.append("logo", LevelUpData.logo);
 
-      await axios.post("http://localhost:8005/api/createlevelup", formData, {
+      await axios.post("https://api.gradeup01.in/api/createlevelup", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -417,18 +417,18 @@ export const LevelUpEdit: React.FC = () => {
     const fetchLevelUpData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getlevelupid/${id}`
+          `https://api.gradeup01.in/api/getlevelupid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
           setLevelUpUser(data);
           setPreviewImage1(
-            `http://localhost:8005/images/${data.levelupimage1}`
+            `https://api.gradeup01.in/images/${data.levelupimage1}`
           );
           setPreviewImage2(
-            `http://localhost:8005/images/${data.levelupimage2}`
+            `https://api.gradeup01.in/images/${data.levelupimage2}`
           );
-          setPreviewImage3(`http://localhost:8005/images/${data.logo}`);
+          setPreviewImage3(`https://api.gradeup01.in/images/${data.logo}`);
         } else {
           toast.error("Failed to load data.");
         }
@@ -472,8 +472,8 @@ export const LevelUpEdit: React.FC = () => {
 
     img.onload = () => {
       const { width, height } = img;
-      if (width > 1350 || height > 700) {
-        toast.error("Image dimensions should not exceed 1350x700.");
+      if (width > 1000 || height > 500) {
+        toast.error("Image dimensions should not exceed 1000x500.");
         URL.revokeObjectURL(objectUrl);
         return;
       }
@@ -507,7 +507,7 @@ export const LevelUpEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatelevelup/${id}`,
+        `https://api.gradeup01.in/api/updatelevelup/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

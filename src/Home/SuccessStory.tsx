@@ -27,7 +27,7 @@ export const SuccessStory: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:8005/api/getsuccessstory"
+        "https://api.gradeup01.in/api/getsuccessstory"
       );
       if (response.data.length > 0) {
         setMainHeading(response.data[0].heading);
@@ -42,7 +42,7 @@ export const SuccessStory: React.FC = () => {
   const deleteUser = async (userId: string) => {
     try {
       await axios.delete(
-        `http://localhost:8005/api/deletesuccessstory/${userId}`
+        `https://api.gradeup01.in/api/deletesuccessstory/${userId}`
       );
 
       setSuccessStoryUser((prevUsers) =>
@@ -134,7 +134,7 @@ export const SuccessStory: React.FC = () => {
                     <div className="w-full flex md:w-1/3 px-2 mt-4">
                       <img
                         className="w-50 h-50 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.successstoryimage}`}
+                        src={`https://api.gradeup01.in/images/${user.successstoryimage}`}
                         alt="SuccessStory Img2"
                       />
                       <Link to={`/SuccessStory-edit-img/${user._id}`}>
@@ -238,7 +238,7 @@ export const SuccessStoryAdd: React.FC = () => {
       formData.append("successstoryimage", SuccessStoryData.successstoryimage);
 
       await axios.post(
-        "http://localhost:8005/api/createsuccessstory",
+        "https://api.gradeup01.in/api/createsuccessstory",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -347,7 +347,7 @@ export const SuccessStoryEdit: React.FC = () => {
   const fetchFirstStepData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getsuccessstoryid/${id}`
+        `https://api.gradeup01.in/api/getsuccessstoryid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
@@ -398,7 +398,7 @@ export const SuccessStoryEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatesuccessstory/${id}`,
+        `https://api.gradeup01.in/api/updatesuccessstory/${id}`,
         formData,
         {
           headers: {
@@ -518,7 +518,7 @@ export const SuccessStoryEditImg: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatesuccessstory/${id}`,
+        `https://api.gradeup01.in/api/updatesuccessstory/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

@@ -22,7 +22,7 @@ export const Test: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/gettest");
+      const response = await axios.get("https://api.gradeup01.in/api/gettest");
         setTestUser(response.data);
     };
 
@@ -115,7 +115,7 @@ export const Test: React.FC = () => {
                     <div className="w-full md:w-1/2 px-2 my-6">
                       <img
                         className="w-full h-100 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.testimage}`}
+                        src={`https://api.gradeup01.in/images/${user.testimage}`}
                         alt="Test Img1"
                       />
                     </div>
@@ -250,7 +250,7 @@ export const TestAdd: React.FC = () => {
       formData.append("description", editorData);
         // formData.append("testimage", TestData.testimage);
 
-      await axios.post("http://localhost:8005/api/createtest", formData, {
+      await axios.post("https://api.gradeup01.in/api/createtest", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -392,14 +392,14 @@ export const TestEdit: React.FC = () => {
   const fetchTestData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/gettestbyid/${id}`
+        `https://api.gradeup01.in/api/gettestbyid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
         const data = response.data.data;
 
         setTestUser(data);
-        setPreviewImage1(`http://localhost:8005/images/${data.testimage}`);
+        setPreviewImage1(`https://api.gradeup01.in/images/${data.testimage}`);
 
         // Wait for CKEditor to be ready
         const interval = setInterval(() => {
@@ -492,7 +492,7 @@ export const TestEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatetest/${id}`,
+        `https://api.gradeup01.in/api/updatetest/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

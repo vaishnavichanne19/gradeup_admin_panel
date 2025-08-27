@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getFooter");
+      const response = await axios.get("https://api.gradeup01.in/api/getFooter");
       setFooterUser(response.data);
     };
 
@@ -89,7 +89,7 @@ export const FooterEdit: React.FC = () => {
     const fetchFooterData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getFooterbyid/${id}`
+          `https://api.gradeup01.in/api/getFooterbyid/${id}`
         );
         if (response.data.success) {
           setFooterUser(response.data.data);
@@ -114,7 +114,7 @@ export const FooterEdit: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateFooter/${id}`,
+        `https://api.gradeup01.in/api/updateFooter/${id}`,
         Footeruser
       );
 

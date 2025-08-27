@@ -33,9 +33,9 @@ export const ExamSubject: React.FC = () => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const ExamRes = await axios.get("http://localhost:8005/api/getexam");
+      const ExamRes = await axios.get("https://api.gradeup01.in/api/getexam");
       const subjectRes = await axios.get(
-        "http://localhost:8005/api/getallexamsubject"
+        "https://api.gradeup01.in/api/getallexamsubject"
       );
 
       setExams(ExamRes.data);
@@ -47,7 +47,7 @@ export const ExamSubject: React.FC = () => {
 
   const DeleteSubject = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deleteexamsubject/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deleteexamsubject/${userId}`);
 
       setSubjects((PrevUser) => PrevUser.filter((user) => user._id !== userId));
 

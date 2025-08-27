@@ -4,7 +4,6 @@ import PageBreadcrumb from "../components/common/PageBreadCrumb";
 import { Link, useNavigate, useParams } from "react-router";
 import Label from "../components/form/Label";
 import Input from "../components/form/input/InputField";
-import TextArea from "../components/form/input/TextArea";
 import Button from "../components/ui/button/Button";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -27,7 +26,7 @@ export const StartPracticing: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:8005/api/getstartpracticing"
+        "https://api.gradeup01.in/api/getstartpracticing"
       );
       setStartPracticingUser(response.data);
     };
@@ -161,21 +160,21 @@ export const StartPracticing: React.FC = () => {
                     <div className="w-full md:w-1/2 px-2 my-6">
                       <img
                         className="w-full h-100 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.startimage1}`}
+                        src={`https://api.gradeup01.in/images/${user.startimage1}`}
                         alt="StartPracticing Img1"
                       />
                     </div>
                     <div className="w-full md:w-1/2 px-2 my-6">
                       <img
                         className="w-full h-100 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.startimage2}`}
+                        src={`https://api.gradeup01.in/images/${user.startimage2}`}
                         alt="StartPracticing Img2"
                       />
                     </div>
                     <div className="w-full md:w-1/2 px-2">
                       <img
                         className="w-full h-100 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.startimage3}`}
+                        src={`https://api.gradeup01.in/images/${user.startimage3}`}
                         alt="StartPracticing Img3"
                       />
                     </div>
@@ -328,7 +327,7 @@ export const StartPracticingAdd: React.FC = () => {
       formData.append("startimage3", StartPracticingData.startimage3);
 
       await axios.post(
-        "http://localhost:8005/api/createstartpracticing",
+        "https://api.gradeup01.in/api/createstartpracticing",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -509,16 +508,16 @@ export const StartPracticingEdit: React.FC = () => {
     const fetchStartPracticingData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getstartpracticingbyid/${id}`
+          `https://api.gradeup01.in/api/getstartpracticingbyid/${id}`
         );
         console.log("API response:", response.data);
         if (response.data.success) {
           const data = response.data.data;
 
           setStartPracticingUser(data);
-          setPreviewImage1(`http://localhost:8005/images/${data.startimage1}`);
-          setPreviewImage2(`http://localhost:8005/images/${data.startimage2}`);
-          setPreviewImage3(`http://localhost:8005/images/${data.startimage3}`);
+          setPreviewImage1(`https://api.gradeup01.in/images/${data.startimage1}`);
+          setPreviewImage2(`https://api.gradeup01.in/images/${data.startimage2}`);
+          setPreviewImage3(`https://api.gradeup01.in/images/${data.startimage3}`);
         }
       } catch (error) {
         console.error("Failed to fetch data:", error);
@@ -598,7 +597,7 @@ export const StartPracticingEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatestartpracticing/${id}`,
+        `https://api.gradeup01.in/api/updatestartpracticing/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -729,7 +728,7 @@ export const StartPracticingQuoteEdit: React.FC = () => {
     const fetchStartPracticingData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getstartpracticingbyid/${id}`
+        `https://api.gradeup01.in/api/getstartpracticingbyid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
@@ -760,7 +759,7 @@ export const StartPracticingQuoteEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatestartpracticing/${id}`,
+        `https://api.gradeup01.in/api/updatestartpracticing/${id}`,
         formData,
         
       );

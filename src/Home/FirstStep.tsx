@@ -28,7 +28,7 @@ export const FirstStep: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:8005/api/getfirststep"
+        "https://api.gradeup01.in/api/getfirststep"
       );
       if (response.data.length > 0) {
         setMainHeading(response.data[0].heading);
@@ -44,7 +44,7 @@ export const FirstStep: React.FC = () => {
 
   const deleteUser = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deletefirststep/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deletefirststep/${userId}`);
 
       setFirstStepUser((prevUsers) =>
         prevUsers.filter((user) => user._id !== userId)
@@ -154,7 +154,7 @@ export const FirstStep: React.FC = () => {
                     <div className="w-full flex md:w-1/3 px-2 mt-4">
                       <img
                         className="w-50 h-50 rounded-md object-cover"
-                        src={`http://localhost:8005/images/${user.firststepimage}`}
+                        src={`https://api.gradeup01.in/images/${user.firststepimage}`}
                         alt="FirstStep Img2"
                       />
                       <Link to={`/FirstStep-edit-img/${user._id}`}>
@@ -257,7 +257,7 @@ export const FirstStepAdd: React.FC = () => {
       const formData = new FormData();
       formData.append("firststepimage", FirstStepData.firststepimage);
 
-      await axios.post("http://localhost:8005/api/createfirststep", formData, {
+      await axios.post("https://api.gradeup01.in/api/createfirststep", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -366,7 +366,7 @@ export const FirstStepEdit: React.FC = () => {
   const fetchFirstStepData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getfirststepid/${id}`
+        `https://api.gradeup01.in/api/getfirststepid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
@@ -418,7 +418,7 @@ export const FirstStepEdit: React.FC = () => {
     formData.append("title", FirstStepuser.title);
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatefirststep/${id}`,
+        `https://api.gradeup01.in/api/updatefirststep/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -554,7 +554,7 @@ export const FirstStepEditImg: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatefirststep/${id}`,
+        `https://api.gradeup01.in/api/updatefirststep/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

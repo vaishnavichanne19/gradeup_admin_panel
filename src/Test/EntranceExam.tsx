@@ -41,7 +41,7 @@ export const EntranceExam: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getexam");
+      const response = await axios.get("https://api.gradeup01.in/api/getexam");
 
       if (response.data.length > 0) {
         setMainHeading(response.data[0].heading);
@@ -56,7 +56,7 @@ export const EntranceExam: React.FC = () => {
   const DeleteEntranceExam = async (userId: string) => {
     try {
       await axios.delete(
-        `http://localhost:8005/api/deleteEntranceExam/${userId}`
+        `https://api.gradeup01.in/api/deleteEntranceExam/${userId}`
       );
 
       setEntranceExams((PrevUser) =>
@@ -307,7 +307,7 @@ export const EntranceExamAdd: React.FC = () => {
 
     try {
       await axios.post(
-        "http://localhost:8005/api/createexam",
+        "https://api.gradeup01.in/api/createexam",
         EntranceExamData
       );
 
@@ -380,7 +380,7 @@ export const EntranceExamEdit: React.FC = () => {
     const fetchEntranceExamData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getexambyid/${id}`
+          `https://api.gradeup01.in/api/getexambyid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
@@ -404,7 +404,7 @@ export const EntranceExamEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateexam/${id}`,
+        `https://api.gradeup01.in/api/updateexam/${id}`,
         EntranceExamuser
       );
 
@@ -502,7 +502,7 @@ export const ExamSubjectAdd: React.FC = () => {
 
   useEffect(() => {
     const fetchEntranceExams = async () => {
-      const response = await axios.get("http://localhost:8005/api/getexam");
+      const response = await axios.get("https://api.gradeup01.in/api/getexam");
       setEntranceExamUser(response.data.slice(1));
     };
 
@@ -521,7 +521,7 @@ export const ExamSubjectAdd: React.FC = () => {
 
     try {
       await axios.post(
-        "http://localhost:8005/api/createexamsubject",
+        "https://api.gradeup01.in/api/createexamsubject",
         SubjectData
       );
 
@@ -607,7 +607,7 @@ export const ExamSubjectEdit: React.FC = () => {
     const fetchSubjectData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getexamsubjectid/${id}`
+          `https://api.gradeup01.in/api/getexamsubjectid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
@@ -631,7 +631,7 @@ export const ExamSubjectEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateexamsubject/${id}`,
+        `https://api.gradeup01.in/api/updateexamsubject/${id}`,
         Subjectuser
       );
 
@@ -709,7 +709,7 @@ export const ExamPdfAdd: React.FC = () => {
   // Fetch EntranceExams
   useEffect(() => {
     const fetchEntranceExams = async () => {
-      const response = await axios.get("http://localhost:8005/api/getexam");
+      const response = await axios.get("https://api.gradeup01.in/api/getexam");
       setEntranceExamUser(response.data.slice(1));
     };
     fetchEntranceExams();
@@ -723,7 +723,7 @@ export const ExamPdfAdd: React.FC = () => {
         return;
       }
       const response = await axios.get(
-        `http://localhost:8005/api/getallexamsubject?entranceexamId=${PdfData.entranceexamId}`
+        `https://api.gradeup01.in/api/getallexamsubject?entranceexamId=${PdfData.entranceexamId}`
       );
       setSubjectUser(response.data);
     };
@@ -775,7 +775,7 @@ export const ExamPdfAdd: React.FC = () => {
       formData.append("entranceexamId", PdfData.entranceexamId);
       formData.append("entranceexamsubjectId", PdfData.entranceexamsubjectId);
 
-      await axios.post("http://localhost:8005/api/createexampdf", formData, {
+      await axios.post("https://api.gradeup01.in/api/createexampdf", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -865,7 +865,7 @@ interface PdfEditData {
 }
 
 export const ExamPdfEdit: React.FC = () => {
-  const [PdfUser, setPdfUser] = useState<PdfEditData>({
+  const [_PdfUser, setPdfUser] = useState<PdfEditData>({
     pdfname: "",
   });
 
@@ -877,7 +877,7 @@ export const ExamPdfEdit: React.FC = () => {
     const fetchPdfData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getexampdfid/${id}`
+          `https://api.gradeup01.in/api/getexampdfid/${id}`
         );
         if (response.data.success) {
           const data = response.data.data;
@@ -920,7 +920,7 @@ export const ExamPdfEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateexampdf/${id}`,
+        `https://api.gradeup01.in/api/updateexampdf/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

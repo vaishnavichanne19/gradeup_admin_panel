@@ -31,7 +31,7 @@ export const ContactForm: React.FC = () => {
 
   useEffect (() => {
     const FetchData = async () => {
-        const response = await axios.get("http://localhost:8005/api/getcontactform");
+        const response = await axios.get("https://api.gradeup01.in/api/getcontactform");
         setContactForm(response.data)
     };
 
@@ -40,7 +40,7 @@ export const ContactForm: React.FC = () => {
 
   const DeleteData = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deletecontactform/${userId}`)
+      await axios.delete(`https://api.gradeup01.in/api/deletecontactform/${userId}`)
 
       setContactForm((Prev) => 
         Prev.filter((user) => user._id !== userId)

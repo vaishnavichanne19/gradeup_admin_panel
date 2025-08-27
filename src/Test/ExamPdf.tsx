@@ -40,11 +40,11 @@ export const ExamPdf: React.FC = () => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const ExamRes = await axios.get("http://localhost:8005/api/getexam");
+      const ExamRes = await axios.get("https://api.gradeup01.in/api/getexam");
       const subjectRes = await axios.get(
-        "http://localhost:8005/api/getallexamsubject"
+        "https://api.gradeup01.in/api/getallexamsubject"
       );
-      const pdfRes = await axios.get("http://localhost:8005/api/getexampdf");
+      const pdfRes = await axios.get("https://api.gradeup01.in/api/getexampdf");
 
       setExampdfs(ExamRes.data);
       setSubjects(subjectRes.data);
@@ -56,7 +56,7 @@ export const ExamPdf: React.FC = () => {
 
   const DeletePdf = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deleteexampdf/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deleteexampdf/${userId}`);
 
       setPdfs((PrevUser) => PrevUser.filter((user) => user._id !== userId));
 
@@ -216,7 +216,7 @@ export const ExamPdf: React.FC = () => {
                       </TableCell>
                       <TableCell className="px-4 py-3  text-start text-theme-sm font-semibold dark:text-gray-400">
                         <a
-                          href={`http://localhost:8005/files/${pdf.pdfname}`}
+                          href={`https://api.gradeup01.in/files/${pdf.pdfname}`}
                           target="_blank"
                           rel="noreferrer"
                           className="text-sm text-blue-600 underline"

@@ -47,12 +47,12 @@ export const BoardPdf: React.FC = () => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const boardRes = await axios.get("http://localhost:8005/api/getboard");
-      const classRes = await axios.get("http://localhost:8005/api/getclass");
+      const boardRes = await axios.get("https://api.gradeup01.in/api/getboard");
+      const classRes = await axios.get("https://api.gradeup01.in/api/getclass");
       const subjectRes = await axios.get(
-        "http://localhost:8005/api/getallsubject"
+        "https://api.gradeup01.in/api/getallsubject"
       );
-      const pdfRes = await axios.get("http://localhost:8005/api/getpdf");
+      const pdfRes = await axios.get("https://api.gradeup01.in/api/getpdf");
 
       setBoards(boardRes.data);
       setClasses(classRes.data);
@@ -65,7 +65,7 @@ export const BoardPdf: React.FC = () => {
 
   const DeletePdf = async (userId: string) => {
     try {
-      await axios.delete(`http://localhost:8005/api/deletepdf/${userId}`);
+      await axios.delete(`https://api.gradeup01.in/api/deletepdf/${userId}`);
 
       setPdfs((PrevUser) => PrevUser.filter((user) => user._id !== userId));
 
@@ -240,7 +240,7 @@ export const BoardPdf: React.FC = () => {
                       </TableCell>
                       <TableCell className="px-4 py-3  text-start text-theme-sm font-semibold dark:text-gray-400">
                         <a
-                          href={`http://localhost:8005/files/${pdf.pdfname}`}
+                          href={`https://api.gradeup01.in/files/${pdf.pdfname}`}
                           target="_blank"
                           rel="noreferrer"
                           className="text-sm text-blue-600 underline"

@@ -21,7 +21,7 @@ export const Service: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8005/api/getservice");
+      const response = await axios.get("https://api.gradeup01.in/api/getservice");
       setServiceUser(response.data);
     };
 
@@ -121,7 +121,7 @@ export const Service: React.FC = () => {
                       <div className="w-full md:w-1/2 px-2 my-6">
                         <img
                           className="w-full h-100 rounded-md object-cover"
-                          src={`http://localhost:8005/images/${user.serviceimage}`}
+                          src={`https://api.gradeup01.in/images/${user.serviceimage}`}
                           alt="Service Img1"
                         />
                       </div>
@@ -253,7 +253,7 @@ export const ServiceAdd: React.FC = () => {
       formData.append("description", editorData);
       formData.append("serviceimage", ServiceData.serviceimage);
 
-      await axios.post("http://localhost:8005/api/createservice", formData, {
+      await axios.post("https://api.gradeup01.in/api/createservice", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -366,14 +366,14 @@ export const ServiceEdit: React.FC = () => {
     const fetchServiceData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8005/api/getservicebyid/${id}`
+          `https://api.gradeup01.in/api/getservicebyid/${id}`
         );
         console.log("API response:", response.data);
         if (response.data.success) {
           const data = response.data.data;
 
           setServiceUser(data);
-          setPreviewImage1(`http://localhost:8005/images/${data.serviceimage}`);
+          setPreviewImage1(`https://api.gradeup01.in/images/${data.serviceimage}`);
 
           // Wait for CKEditor to be ready
           const interval = setInterval(() => {
@@ -456,7 +456,7 @@ export const ServiceEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updateservice/${id}`,
+        `https://api.gradeup01.in/api/updateservice/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

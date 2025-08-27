@@ -28,7 +28,7 @@ export const QuestionPaper: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:8005/api/getquestionpaper"
+        "https://api.gradeup01.in/api/getquestionpaper"
       );
       if (response.data.length > 0) {
         setMainHeading(response.data[0].heading);
@@ -46,13 +46,13 @@ export const QuestionPaper: React.FC = () => {
     <div>
       <PageMeta
         title="React.js Profile Dashboard | TailAdmin"
-        description="This is the QuestionPaper page"
+        description="This is the One Question Paper page"
       />
-      <PageBreadcrumb pageTitle="QuestionPaper" />
+      <PageBreadcrumb pageTitle="One Question Paper" />
       <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Question Paper Information
+            One Question Paper Information
           </h3>
           {/* <Link to="/QuestionPaper-add">
             <button className="btn btn-primary bg-blue-600 text-white px-4 py-2 rounded-lg">
@@ -124,7 +124,7 @@ export const QuestionPaper: React.FC = () => {
                 <div className="w-full md:w-1/2 px-2">
                   <img
                     className="w-full h-auto rounded-md object-cover"
-                    src={`http://localhost:8005/images/${Image}`}
+                    src={`https://api.gradeup01.in/images/${Image}`}
                     alt="QuestionPaper Img1"
                   />
                 </div>
@@ -184,7 +184,7 @@ export const QuestionPaper: React.FC = () => {
                   <div className="w-full md:w-1/2 px-2">
                     <img
                       className="w-full h-auto rounded-md object-cover"
-                      src={`http://localhost:8005/images/${user.qustionpaperimage}`}
+                      src={`https://api.gradeup01.in/images/${user.qustionpaperimage}`}
                       alt="QuestionPaper Img1"
                     />
                   </div>
@@ -319,7 +319,7 @@ export const QuestionPaperAdd: React.FC = () => {
       formData.append("qustionpaperimage", QuestionPaperData.qustionpaperimage);
 
       await axios.post(
-        "http://localhost:8005/api/createquestionpaper",
+        "https://api.gradeup01.in/api/createquestionpaper",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -452,7 +452,7 @@ export const QuestionPaperEdit: React.FC = () => {
   const fetchQuestionPaperData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8005/api/getquestionpaperid/${id}`
+        `https://api.gradeup01.in/api/getquestionpaperid/${id}`
       );
       console.log("API response:", response.data);
       if (response.data.success) {
@@ -460,7 +460,7 @@ export const QuestionPaperEdit: React.FC = () => {
 
         setQuestionPaperUser(data);
         setPreviewImage1(
-          `http://localhost:8005/images/${data.qustionpaperimage}`
+          `https://api.gradeup01.in/images/${data.qustionpaperimage}`
         );
 
         // Wait for CKEditor to be ready
@@ -551,13 +551,13 @@ export const QuestionPaperEdit: React.FC = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8005/api/updatequestionpaper/${id}`,
+        `https://api.gradeup01.in/api/updatequestionpaper/${id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
 
       if (response.data.success) {
-        toast.success("Data updated successfully!");
+        toast.info("Data updated successfully!");
         navigate("/QuestionPaper");
       } else {
         toast.error(response.data.message);
